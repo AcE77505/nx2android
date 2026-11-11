@@ -43,7 +43,7 @@ class ExtractIntegrity(unittest.TestCase):
         # Compile the full production source with the exact cached LibHac version; never fetch or install test dependencies.
         (cls.work / 'Fixture.csproj').write_text(f'''<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup>
 <OutputType>Exe</OutputType><TargetFramework>{target}</TargetFramework><StartupObject>IntegrityFixture</StartupObject>
-<AllowUnsafeBlocks>true</AllowUnsafeBlocks><EnableDefaultCompileItems>false</EnableDefaultCompileItems><NuGetAudit>false</NuGetAudit>
+<AllowUnsafeBlocks>true</AllowUnsafeBlocks><CETCompat>false</CETCompat><EnableDefaultCompileItems>false</EnableDefaultCompileItems><NuGetAudit>false</NuGetAudit>
 </PropertyGroup><ItemGroup><Compile Include="{escape(str(PROJECT.with_name('Program.cs')))}" />
 <Compile Include="{escape(str(REPO / 'tests/nx_extract_integrity_fixture.cs'))}" />
 <Reference Include="LibHac"><HintPath>{escape(str(dlls[-1]))}</HintPath></Reference></ItemGroup></Project>''')
